@@ -1,0 +1,6 @@
+dependencies:
+- name: timescaledb-single
+  repository: https://charts.timescale.com
+  version: 0.16.2
+digest: sha256:8648ddfc53c284c49ce3eec10101a38149bf99f4e6e6b26d5faaec44ef3ae8c5
+generated: "2022-09-18T02:30:31.300950308+02:00"

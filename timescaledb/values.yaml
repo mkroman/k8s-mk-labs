@@ -1,0 +1,25 @@
+certificate:
+  # Generate a self signed certificate managed my cert-manager.
+  enabled: true
+
+  issuerRef:
+    name: selfsigned
+    kind: ClusterIssuer
+
+timescaledb:
+  enabled: true
+
+  secrets:
+    credentialsSecretName: ''
+    certificateSecretName: 'timescaledb-tls'
+
+  persistentVolumes:
+    # Use a persistent volume for the data.
+    data:
+      enabled: true
+      size: 100Gi
+      storageClass: 'longhorn'
+
+    wal:
+      # Use the data volume for WALs.
+      enabled: false

@@ -1,0 +1,18 @@
+{{- if .Values.certificate.enabled }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "timescaledb.fullname" . }}
+spec:
+  secretName: {{ .Values.timescaledb.secrets.certificateSecretName }}
+  isCA: true
+  commonName: {{ include "clusterName" . }}
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+
+  {{- with .Values.certificate.issuerRef }}
+  issuerRef:
+  {{- . | toYaml | nindent 4 }}
+  {{- end }}
+{{ end }}
