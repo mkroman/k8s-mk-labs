@@ -35,6 +35,8 @@ externalSecrets:
 timescaledb_single:
   enabled: true
 
+  podManagementPolicy: Parallel
+
   secrets:
     credentialsSecretName: 'timescaledb-credentials'
     certificateSecretName: 'timescaledb-tls'
