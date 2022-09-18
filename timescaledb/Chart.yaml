@@ -6,7 +6,7 @@ type: application
 version: 0.1.0
 dependencies:
 - name: timescaledb-single
-  alias: timescaledb
+  alias: timescaledb_single
   version: "0.16.2"
   repository: "https://charts.timescale.com"
-  condition: timescaledb.enabled
+  condition: timescaledb_single.enabled

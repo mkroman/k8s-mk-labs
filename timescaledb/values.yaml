@@ -32,7 +32,7 @@ externalSecrets:
         key: secret/mk-labs/timescaledb
         property: admin-password
 
-timescaledb:
+timescaledb_single:
   enabled: true
 
   secrets:

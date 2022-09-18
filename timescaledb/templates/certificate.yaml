@@ -4,7 +4,7 @@ kind: Certificate
 metadata:
   name: {{ include "timescaledb.fullname" . }}
 spec:
-  secretName: {{ .Values.timescaledb.secrets.certificateSecretName }}
+  secretName: {{ .Values.timescaledb_single.secrets.certificateSecretName }}
   isCA: true
   commonName: {{ include "clusterName" . }}
   privateKey:
