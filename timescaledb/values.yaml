@@ -19,15 +19,15 @@ externalSecrets:
     # -- List of keys to pull from the secret store and store in the credentials
     # secret.
     data:
-    - secretKey: PATRINO_SUPERUSER_PASSWORD
+    - secretKey: PATRONI_SUPERUSER_PASSWORD
       remoteRef:
         key: secret/mk-labs/timescaledb
         property: superuser-password
-    - secretKey: PATRINO_REPLICATION_PASSWORD
+    - secretKey: PATRONI_REPLICATION_PASSWORD
       remoteRef:
         key: secret/mk-labs/timescaledb
         property: replication-password
-    - secretKey: PATRINO_admin_PASSWORD
+    - secretKey: PATRONI_admin_PASSWORD
       remoteRef:
         key: secret/mk-labs/timescaledb
         property: admin-password
