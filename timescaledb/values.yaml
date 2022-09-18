@@ -1,16 +1,42 @@
 certificate:
-  # Generate a self signed certificate managed my cert-manager.
+  # -- Generate a self signed certificate managed my cert-manager.
   enabled: true
 
   issuerRef:
     name: selfsigned
     kind: ClusterIssuer
 
+externalSecrets:
+  credentials:
+    # -- Enable pulling the patroni credentials from an external secrets provider.
+    enabled: true
+    # -- The interval to refresh the secret values.
+    refreshInterval: 600s
+    # -- The name of the secret store backend.
+    secretStoreName: vault
+    # -- The type of secret store.
+    secretStoreKind: SecretStore
+    # -- List of keys to pull from the secret store and store in the credentials
+    # secret.
+    data:
+    - secretKey: PATRINO_SUPERUSER_PASSWORD
+      remoteRef:
+        key: secret/mk-labs/timescaledb
+        property: superuser-password
+    - secretKey: PATRINO_REPLICATION_PASSWORD
+      remoteRef:
+        key: secret/mk-labs/timescaledb
+        property: replication-password
+    - secretKey: PATRINO_admin_PASSWORD
+      remoteRef:
+        key: secret/mk-labs/timescaledb
+        property: admin-password
+
 timescaledb:
   enabled: true
 
   secrets:
-    credentialsSecretName: ''
+    credentialsSecretName: 'timescaledb-credentials'
     certificateSecretName: 'timescaledb-tls'
 
   persistentVolumes:
